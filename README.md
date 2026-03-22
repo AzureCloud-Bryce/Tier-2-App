@@ -368,6 +368,7 @@ After `terraform apply` completes, go to the Azure Portal and verify each item b
 | `InvalidResourceReference` on NIC | Run `terraform apply` again — this is a timing issue where the NIC tried to create before the subnet finished |
 | Duplicate resource error | Search for duplicate resource blocks in `main.tf` and remove the extra copy |
 | SSH key path not found | Use the full Windows path: `C:\Users\<YourUsername>\.ssh\key-lab02` |
+| Error: creating Linux Virtual Machine - Standard_B1s' is currently not available in location 'REGION'. Please try another size or deploy to a different location or different zone. | You may need to locate a differnt VM size. "Standard_D2s_v3" often has availability. |
 
 ---
 
