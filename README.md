@@ -15,30 +15,23 @@ In this lab, you will use Terraform to provision an IaaS-based 2-tier applicatio
 ## Architecture Diagram
 
 ```mermaid
-flowchart LR
+flowchart TB
     Internet(["Internet"])
 
-    Internet -->|"HTTP 80 / SSH 22"| web
-
     subgraph vnet["vnet-applab01 — 10.0.0.0/16"]
+        direction LR
 
-        subgraph public["snet-web — Public Subnet — 10.0.1.0/24"]
-            web["vm-web-01
-            Ubuntu 20.04
-            Public IP: Yes"]
+        subgraph public["snet-web — 10.0.1.0/24"]
+            web["vm-web-01 | Ubuntu 20.04 | Public IP: Yes"]
         end
 
-        subgraph private["snet-db — Private Subnet — 10.0.2.0/24"]
-            nsg["nsg-db-01
-            Inbound: Allow from 10.0.1.0/24 only"]
-
-            db["vm-db-01
-            Ubuntu 20.04
-            No Public IP"]
+        subgraph private["snet-db — 10.0.2.0/24"]
+            nsg["nsg-db-01 | Allow inbound from 10.0.1.0/24 only"]
+            db["vm-db-01 | Ubuntu 20.04 | No Public IP"]
         end
-
     end
 
+    Internet -->|"HTTP 80 / SSH 22"| web
     web -->|"Internal traffic only"| nsg
     nsg --> db
 ```
