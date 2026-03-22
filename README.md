@@ -59,7 +59,7 @@ Copy the `id` field — this is your **Subscription ID**. You will need it in th
 
 #### Step 2: Generate an SSH Key Pair
 
-Create the `.ssh` folder if it does not exist:
+In the Terminal, create the `.ssh` folder if it does not exist:
 
 ```powershell
 mkdir C:\Users\<YourUsername>\.ssh
