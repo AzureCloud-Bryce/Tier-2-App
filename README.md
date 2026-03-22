@@ -22,18 +22,18 @@ flowchart TB
         direction LR
 
         subgraph public["snet-web — 10.0.1.0/24"]
-            web["vm-web-01 | Ubuntu 20.04 | Public IP: Yes"]
+            web["vm-web-01\nUbuntu 20.04\nPublic IP: Yes"]
         end
 
         subgraph private["snet-db — 10.0.2.0/24"]
-            nsg["nsg-db-01 | Allow inbound from 10.0.1.0/24 only"]
-            db["vm-db-01 | Ubuntu 20.04 | No Public IP"]
+            nsg["nsg-db-01\nAllow inbound from 10.0.1.0/24 only"]
+            db["vm-db-01\nUbuntu 20.04\nNo Public IP"]
         end
     end
 
-    Internet -->|"HTTP 80 / SSH 22"| web
-    web -->|"Internal traffic only"| nsg
-    nsg --> db
+    Internet --- web
+    web --- nsg
+    nsg --- db
 ```
 
 ---
