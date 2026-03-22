@@ -20,19 +20,27 @@ flowchart TD
 
     Internet -->|"HTTP 80 / SSH 22"| web
 
-    subgraph vnet["vnet-applab01 (10.0.0.0/16)"]
-        subgraph public["snet-web — Public Subnet (10.0.1.0/24)"]
-            web["vm-web-01\nUbuntu 20.04\nPublic IP: Yes"]
+    subgraph vnet["vnet-applab01 — 10.0.0.0/16"]
+
+        subgraph public["snet-web — Public Subnet — 10.0.1.0/24"]
+            web["vm-web-01
+            Ubuntu 20.04
+            Public IP: Yes"]
         end
 
-        subgraph private["snet-db — Private Subnet (10.0.2.0/24)"]
-            nsg["nsg-db-01\nAllow from 10.0.1.0/24 only"]
-            db["vm-db-01\nUbuntu 20.04\nNo Public IP"]
-            nsg --> db
+        subgraph private["snet-db — Private Subnet — 10.0.2.0/24"]
+            nsg["nsg-db-01
+            Inbound: Allow from 10.0.1.0/24 only"]
+
+            db["vm-db-01
+            Ubuntu 20.04
+            No Public IP"]
         end
 
-        web -->|"Internal traffic only"| nsg
     end
+
+    web -->|"Internal traffic only"| nsg
+    nsg --> db
 ```
 
 ---
