@@ -14,7 +14,7 @@ In this lab, you will use Terraform to provision an IaaS-based 2-tier applicatio
 
 ## Architecture Diagram
 
-![Architecture Diagram](screenshots/architecture.png)
+![alt text](AzureAppLab.drawio.png)
 
 ---
 
