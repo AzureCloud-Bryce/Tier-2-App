@@ -15,7 +15,7 @@ In this lab, you will use Terraform to provision an IaaS-based 2-tier applicatio
 ## Architecture Diagram
 
 ```mermaid
-flowchart TD
+flowchart LR
     Internet(["Internet"])
 
     Internet -->|"HTTP 80 / SSH 22"| web
