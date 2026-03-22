@@ -14,27 +14,7 @@ In this lab, you will use Terraform to provision an IaaS-based 2-tier applicatio
 
 ## Architecture Diagram
 
-```mermaid
-flowchart TB
-    Internet(["Internet"])
-
-    subgraph vnet["vnet-applab01 — 10.0.0.0/16"]
-        direction LR
-
-        subgraph public["snet-web — 10.0.1.0/24"]
-            web["vm-web-01\nUbuntu 20.04\nPublic IP: Yes"]
-        end
-
-        subgraph private["snet-db — 10.0.2.0/24"]
-            nsg["nsg-db-01\nAllow inbound from 10.0.1.0/24 only"]
-            db["vm-db-01\nUbuntu 20.04\nNo Public IP"]
-        end
-    end
-
-    Internet --- web
-    web --- nsg
-    nsg --- db
-```
+![Architecture Diagram](screenshots/architecture.png)
 
 ---
 
@@ -60,8 +40,6 @@ applab01/
 ---
 
 ## Step-by-Step Instructions
-
-### Phase 0: Pre-Flight Setup
 
 #### Step 1: Log into Azure
 
