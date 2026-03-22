@@ -9,6 +9,7 @@
 ## Objective
 
 In this lab, you will use Terraform to provision infastructure for a 2-tier web application in Azure. You will create a Virtual Network with two subnets, a Public subnet for a Web Server and a Private subnet for a Database Server. To secure the application, you will configure a Network Security Group (NSG) to ensure the Database Server can only be accessed by the Web Server and not from the public interent.
+You will need to make changes to portions of the code, so keep an eye out. I inculded common errors towards the bottom.
 
 ---
 
