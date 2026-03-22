@@ -1,7 +1,7 @@
 # Lab 02: Building a Secure 2-Tier Web Application with Terraform
 
 **Author:** Bryce Johnson
-**Estimated Time:** 45 Minutes
+**Estimated Time:** 30-45 Minutes
 **Difficulty:** Beginner
 
 ---
