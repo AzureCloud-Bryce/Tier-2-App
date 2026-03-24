@@ -138,6 +138,9 @@ variable "admin_ssh_key" {
 
 ```hcl
 # ── Phase 1: Network Foundation ──────────────────────────
+# You can copy ALL of this together or do one 'Phase' at a time. 
+# If you change the name of a resource group or resource, make sure the changes are made everywhere to match.
+
 
 resource "azurerm_resource_group" "applab01" {
   name     = "rg-applab01-${var.your_name}"
@@ -286,7 +289,7 @@ resource "azurerm_subnet_network_security_group_association" "db" {
 
 ---
 
-### Phase 2: Deploy the Infrastructure
+### Step 2: Deploy the Infrastructure
 
 Run the following commands in PowerShell from inside your `applab01` folder:
 
@@ -311,7 +314,7 @@ Type `yes` when prompted. Deployment takes 2–5 minutes.
 
 ---
 
-### Phase 3: Validate in the Azure Portal
+### Step 3: Validate in the Azure Portal
 
 After `terraform apply` completes, go to the Azure Portal and verify each item below.
 
@@ -319,44 +322,37 @@ After `terraform apply` completes, go to the Azure Portal and verify each item b
 
 - [ ] Resource group `rg-applab01-NAME` exists in your selected region
 
-> **Screenshot placeholder** — take a screenshot of the resource group overview page and drop it here.
-> `![Resource Group](screenshots/01-resource-group.png)`
-
----
 
 #### VNet and Subnets
 
 - [ ] `vnet-applab01` contains both `snet-web` and `snet-db` subnets
 
-> **Screenshot placeholder** — take a screenshot of the Subnets tab inside `vnet-applab01`.
-> `![VNet Subnets](screenshots/02-vnet-subnets.png)`
-
----
 
 #### Web Server has a Public IP
 
 - [ ] `vm-web-01` has a Public IP address assigned on the overview page
 
-> **Screenshot placeholder** — take a screenshot of the `vm-web-01` overview page showing the Public IP.
-> `![Web VM Public IP](screenshots/03-web-vm-public-ip.png)`
-
----
 
 #### Database Server has NO Public IP
 
 - [ ] `vm-db-01` shows **no** Public IP address on the overview page
 
-> **Screenshot placeholder** — take a screenshot of the `vm-db-01` overview page confirming no Public IP.
-> `![DB VM No Public IP](screenshots/04-db-vm-no-public-ip.png)`
-
----
 
 #### NSG is configured correctly
 
 - [ ] `nsg-db-01` is associated with `snet-db` with the `Allow-Web-Subnet` inbound rule
 
-> **Screenshot placeholder** — take a screenshot of the NSG inbound rules.
-> `![NSG Rules](screenshots/05-nsg-rules.png)`
+---
+
+## Clean Up
+
+When you are completely done with this lab, destroy all resources:
+
+```powershell
+terraform destroy
+```
+
+Type `yes` when prompted. This deletes everything inside `rg-applab01-YOUR_NAME`.
 
 ---
 
@@ -388,18 +384,6 @@ To start them again before your next lab:
 az vm start --resource-group rg-applab01-YOUR_NAME --name vm-web-01
 az vm start --resource-group rg-applab01-YOUR_NAME --name vm-db-01
 ```
-
----
-
-## Clean Up
-
-When you are completely done with this lab, destroy all resources:
-
-```powershell
-terraform destroy
-```
-
-Type `yes` when prompted. This deletes everything inside `rg-applab01-YOUR_NAME`.
 
 ---
 
